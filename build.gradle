@@ -1,13 +1,13 @@
 buildscript {
-	repositories {
-		mavenCentral()
-		maven {
-	    url "https://plugins.gradle.org/m2/"
-	  }
-	}
-	dependencies {
-		classpath "gradle.plugin.org.cinchapi.jarsh:jarsh:1.0.0"
-	}
+  repositories {
+    mavenCentral()
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "gradle.plugin.org.cinchapi.jarsh:jarsh:1.0.0"
+  }
 }
 
 plugins {
@@ -15,7 +15,7 @@ plugins {
   id "eclipse"
   id "maven"
   id "signing"
-	id "org.cinchapi.jarsh" version "1.0.0"
+  id "org.cinchapi.jarsh" version "1.0.0"
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
