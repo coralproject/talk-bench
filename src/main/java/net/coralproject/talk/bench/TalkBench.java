@@ -53,6 +53,10 @@ public class TalkBench {
         @Parameter(names = {
                 "--verbose" }, description = "Log extra information for debugging")
         private boolean verbose = false;
+        
+        @Parameter(names = {
+        "-h", "--help" }, description = "Show the help text")
+        private boolean help = false;
 
     }
 
@@ -60,6 +64,11 @@ public class TalkBench {
         Options options = new Options();
         JCommander parser = JCommander.newBuilder().addObject(options).build();
         parser.parse(args);
+        
+        if(options.help) {
+            parser.usage();
+            System.exit(1);
+        }
 
         // Validate the options
         try {
