@@ -60,7 +60,7 @@ public class TalkBench {
 
     }
 
-    public static void main(String... args) throws IOException {
+    public static void main(String... args) throws IOException, InterruptedException {
         Options options = new Options();
         JCommander parser = JCommander.newBuilder().addObject(options).build();
         parser.parse(args);
@@ -128,7 +128,6 @@ public class TalkBench {
             Lorem lorem = LoremIpsum.getInstance();
             Random random = new Random();
             long totalElapsed = 0;
-
             for (int i = 0; i < options.count; ++i) {
                 String comment = "";
                 int seed = random.nextInt();
@@ -174,6 +173,7 @@ public class TalkBench {
                 long start = System.nanoTime();
                 response = client.newCall(request).execute();
                 long elapsed = fromUnit.toMillis(System.nanoTime() - start);
+                Thread.sleep(random.nextInt(1000));
                 totalElapsed += elapsed;
                 System.out.println("Took " + elapsed + " ms");
                 System.out.println("Response Code: " + response.code());
